@@ -1,0 +1,38 @@
+## Task
+
+1. Teman-teman explore, gimana cara untuk melakukan 
+    input value di terminal.
+2. Bikinlah sebuah mini apps kalkulator
+    - Fitur :
+        -- Menu :
+            --- kalkulator / penghitungan
+            --- history
+            --- exit
+
+Contoh
+- Pertama di run
+
+Menu di applikasi
+1. kalkulator
+2. history
+3. exit
+
+Silahkan masukan nomor : 1
+## misal 1
+    - Silahkan masukan angka : 5
+    - Silahkan masukan operasi (+ - * /) : +
+    - Silahkan masukan angka : 5
+    - Hasilnya : 10
+    - Silahkan masukan operasi (+ - * /) : +
+    - Silahkan masukan angka : 5
+    - Hasilnya : 15
+    - Silahkan masukan operasi (+ - * /) : #
+    -- kondisi kalau di input # -> balik ke menu
+
+## misal 2
+    - History kalkulator : 10 15
+
+## misal 3
+    - keluar dari apps
+
+3. Jawaban di push repo
