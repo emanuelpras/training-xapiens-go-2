@@ -1,0 +1,8 @@
+
+## Calculator 
+1. Untuk rumus penghitungan tolong dibuatkan per function
+2. Day ke 3 -> historynya hanya menampung hasil dari penghitungan
+    - Day ke 4 -> history yang ditampung adalah semua proses
+    -- angka1 <operator> angka2 <hasil> <operator> <hasil>
+    --- menggunakan function yang parameternya merupakan pointer
+3. Push di repo
