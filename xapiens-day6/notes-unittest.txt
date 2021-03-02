@@ -1,0 +1,9 @@
+Aturan - aturan dalam penulisan unit test
+
+1. Ketika membuat file unit test, pastikan format penulisan filenya adalah <nama file asli>_test.go
+    -- kalau format penulisan tidak seperti point 1, maka button untuk run unit testnya tidak muncul.
+2. Case nya, file unit test sudah dibuat dengan aturan penamaan (point 1)
+    -- pastikan nama function yang dibuat, formatnya Test<nama function>
+3. Untuk hasil yang tidak sesuai / error
+    -- gunakan function Errorf
+    --- contohnya t.Errorf("Wrong, hasil seharusnya : %.2f ", expectedResultVolume)

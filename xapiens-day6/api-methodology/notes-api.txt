@@ -1,0 +1,22 @@
+1. Kenapa sih kita harus pakai rest api?
+    - multi platform
+    -- mobile dan web bisa sama akses end point nya
+    - jika kondisinya kita hanya butuh web 
+    -- sebagai jembatan antara database dan web. 
+    --- sehingga proses datanya tidak di web (nggak berat).
+    - pertukaran data antar applikasi yang saling terintegrasi
+    --- lempar lemparan textfile (textfile sap itu dikirim tiap hari jam 5 pagi).
+    ---- textfile ini disimpan di server. Kendalanya apa?
+    1. datanya tidak realtime
+    2. kadang data tidak masuk -- mapping di psw yang bermasalah.
+    3. 1 textfile ukuran 100Kb. - seiring berjalannya waktu, akan makan resource dari server. 
+        - Biasanya dilakukan archiving data.
+
+    - Share database
+        - Join development untuk web recruitment developer aop - gs.
+        - database 1 -> di server aop
+            - tablenya itu ada kolom pembeda antara aop sama gs
+        table a ada kolom a - b - c - d - e
+    
+
+
