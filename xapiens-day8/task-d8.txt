@@ -1,0 +1,5 @@
+- Dari mockup & ERD yang sudah dibuat
+    - Bikin mockup tambahan sebanyak 3 dari list end point yang sudah dibuat (total ada 5 mockup)
+- Implementasi ke code go (pakai framework gin gonic)
+    - gunakan controller & untuk setiap end point usahakan di file terpisah
+    - guidence gin -> https://github.com/gin-gonic/gin#installation
