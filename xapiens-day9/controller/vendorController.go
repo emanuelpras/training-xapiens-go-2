@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Fungsi untuk insert data vendor ke dalam table
 func (StrDB *StrDB) PostDataVendor(c *gin.Context) {
 	var (
 		vendor models.Vendor
@@ -21,9 +22,9 @@ func (StrDB *StrDB) PostDataVendor(c *gin.Context) {
 		result = gin.H{
 			"msg": "success",
 			"data": map[string]interface{}{
-				"id":         vendor.ID,
 				"vendorID":   vendor.VendorID,
 				"vendorName": vendor.VendorName,
+				"zipCode":    vendor.ZipCode,
 			},
 		}
 	}
@@ -31,13 +32,16 @@ func (StrDB *StrDB) PostDataVendor(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
+// Fungsi untuk mengambil semua data vendor
 func (StrDB *StrDB) GetVendorList(c *gin.Context) {
 	var (
 		vendor []models.Vendor
 		result gin.H
 	)
 
-	StrDB.DB.Find(&vendor)
+	StrDB.DB.
+		Preload("Employee").
+		Find(&vendor)
 	result = gin.H{
 		"msg":  "success",
 		"data": vendor,
@@ -46,7 +50,7 @@ func (StrDB *StrDB) GetVendorList(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
-// GetDataVendor
+// Fungsi untuk mengambil data berdasarkan parameter
 func (StrDB *StrDB) GetDataVendor(c *gin.Context) {
 	var (
 		vendor []models.Vendor

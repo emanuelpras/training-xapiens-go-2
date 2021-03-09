@@ -21,10 +21,13 @@ func Connection() *gorm.DB {
 	namaDB := "vendorPayload"
 	ssl := "disable"
 	timeZone := "Asia/Jakarta" */
+
 	var userDB, passDB, hostDB, portDB, namaDB, ssl, timeZone string
+
 	//if condition untuk check file .env
 	//kalau nggak ada filenya, munculin error
 	//kalau ada filenya kita set env variablenya
+
 	if err := godotenv.Load(".env"); err != nil { //kalau file nggak ketemu
 		log.Fatalf(err.Error())
 	} else { // kalau file ketemu

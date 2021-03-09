@@ -16,11 +16,17 @@ func main() {
 	// code untuk migrasi
 	models.Migrations(dbPG)
 
+	// routing end point
 	routing := gin.Default()
-	//routing
 
+	// routing vendor
 	routing.POST("/vendor", strDB.PostDataVendor)
 	routing.GET("/vendorList", strDB.GetVendorList)
 	routing.GET("/VendorByQuery", strDB.GetDataVendor)
+
+	// routing employee
+	routing.POST("/employee", strDB.PostDataEmployee)
+	routing.GET("/employeeList", strDB.GetEmployeeList)	
+
 	routing.Run()
 }
