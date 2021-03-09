@@ -1,0 +1,11 @@
+1. Referensi API https://jsonplaceholder.typicode.com/
+
+Task
+1. Pilih 3 endpoint (bebas)
+2. Implemantasikan ke dalam code
+    - Masukan data ke dalam database
+        - Bikin model
+        - Bikin migration
+        - Bikin controller
+3. Tidak ada relasi antar endpoint
+4. Jawaban di push ke repo

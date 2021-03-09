@@ -1,0 +1,42 @@
+1. Install gorm 
+    - go get -u gorm.io/gorm
+2. Install postgre
+    - go get -u gorm.io/driver/postgres
+
+3. Bikin folder config
+    - bikin file config.go 
+    --- untuk konfigurasi ke db
+
+4. Routing ditulis di file apps.go
+5. Bikin folder models
+    - Struct yang nantinya akan otomatis menjadi sebuah table
+    - bikin file migration.go di dalam package models
+
+6. bikin model untuk vendor -> nantinya akan di migrate jika belum ada tablenya
+
+7. env variable taruh di dalam file .env
+
+8. bikin folder controller
+    -- vendorController.go
+
+
+## Opsi 1
+1. Hari ini (Jumat) saya kasih task harian. Deadline pengumpulan di hari senin jam 9.
+2. Hari senin saya kasih case point. Deadline pengumpulan di hari selasa pagi jam 9.
+    - Case point pengerjaannya cuma 1 hari.
+
+## Opsi 2
+1. Hari ini (Jumat) saya kasih task harian. Deadline pengumpulan di hari senin jam 9.
+2. Hari sabtu saya kasih case point. Deadline pengumpulan di hari senin antara 14:00- 15:00
+    - Spare waktu bisa buat kita diskusi bareng tentang case point
+    - Case point pengerjaannya 2,5 hari.
+
+Opsi 2 -> Deal.
+
+
+### Task harian
+1. Pastikan sudah terinstall postgre
+2. Implementasikan dari ERD yang sudah dibuat.
+3. Implementasikan 4 end point menggunakan gorm.
+4. Struct usahakan menggunakan erd yang sudah dibuat.
+5. Jawaban push ke repo.
