@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"xapiens-day9/models"
+	sentryLogger "xapiens-day9/sentry"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,18 +19,29 @@ func (StrDB *StrDB) PostDataVendor(c *gin.Context) {
 	if err := c.Bind(&vendor); err != nil {
 		fmt.Println("Terjadi kesalahan")
 	} else {
-		StrDB.DB.Create(&vendor)
-		result = gin.H{
-			"msg": "success",
-			"data": map[string]interface{}{
-				"vendorID":   vendor.VendorID,
-				"vendorName": vendor.VendorName,
-				"zipCode":    vendor.ZipCode,
-			},
+		// if condition ketika ingin insert data
+		if res := StrDB.DB.Create(&vendor); res.Error != nil { // kondisi ketika ada error
+			// error output
+			err := res.Error
+
+			c.JSON(http.StatusBadRequest, gin.H{
+				"msg": err.Error(),
+			})
+
+			sentryLogger.Sentry(err) // push log error ke sentry
+
+		} else { // ketika tidak terjadi error
+			result = gin.H{
+				"msg": "success",
+				"data": map[string]interface{}{
+					"vendorID":   vendor.VendorID,
+					"vendorName": vendor.VendorName,
+					"zipCode":    vendor.ZipCode,
+				},
+			}
+			c.JSON(http.StatusOK, result)
 		}
 	}
-
-	c.JSON(http.StatusOK, result)
 }
 
 // Fungsi untuk mengambil semua data vendor

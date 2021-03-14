@@ -9,3 +9,8 @@ Task
         - Bikin controller
 3. Tidak ada relasi antar endpoint
 4. Jawaban di push ke repo
+
+
+### Task harian hari ke 13
+1. Dari mini apps yang sudah dibuat, 
+Implemantasikan logger denga sentry (di level controller).

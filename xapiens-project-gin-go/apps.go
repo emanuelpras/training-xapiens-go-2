@@ -42,16 +42,9 @@ func main() {
 
 	auth.Use(middleware.MiddleWare().MiddlewareFunc())
 	{
-		// auth.GET("/hello", func(c *gin.Context) {
-		// 	c.JSON(200, gin.H{
-		// 		"text": "Berhasil masuk ke JWT",
-		// 	})
-		// })
-
-		auth.GET("/vendorList", strDB.GetVendorList)
-
 		// routing vendor
 		auth.POST("/vendor", strDB.PostDataVendor)
+		auth.GET("/vendorList", strDB.GetVendorList)
 
 		auth.GET("/VendorByQuery", strDB.GetDataVendor)
 
@@ -69,3 +62,29 @@ func main() {
 
 	routing.Run()
 }
+
+/* func Sentry() {
+	var DsnSentry string
+
+	if err := godotenv.Load(".env"); err != nil {
+		log.Fatalf(err.Error())
+	} else { // tidak ada error saat ambil file .env
+		DsnSentry = os.Getenv("DSN_SENTRY") // isi value dari variable DsnSentry
+	}
+
+	err := sentry.Init(sentry.ClientOptions{
+		Dsn: DsnSentry,
+	})
+
+	// log untuk capture error
+	if _, errs := os.Open("filename.ext"); errs != nil {
+		sentry.CaptureException(err)
+	}
+
+	if err != nil {
+		log.Fatalf("sentry.Init: %s", err)
+	}
+	defer sentry.Flush(2 * time.Second)
+
+	sentry.CaptureMessage("It works!")
+} */
