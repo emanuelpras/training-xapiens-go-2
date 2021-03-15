@@ -1,6 +1,0 @@
-### Task
-
-- Daftar akun sentry -> urlnya : https://sentry.io/welcome/
-- Coba pelajari dokumentasi -> urlnya : https://docs.sentry.io/platforms/go/
-- Jwt middleware -> implementasikan dari task hari ke 11 dengan jwt.
-- Code nya dibuat clean -> router dan jwt jangan dijadikan 1 file.
