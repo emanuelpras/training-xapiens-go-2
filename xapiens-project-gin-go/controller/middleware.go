@@ -72,11 +72,18 @@ func (StrDB *StrDB) MiddleWare() (mw *jwt.GinJWTMiddleware) {
 
 		// menentukan role nya
 		Authorizator: func(data interface{}, c *gin.Context) bool {
-			if v, ok := data.(*login); ok && v.Username == "admin" {
-				return true
-			}
+			claims := jwt.ExtractClaims(c)
+			method := c.Request.Method
+			var result bool
 
-			return false
+			if claims["role"] == "admin" {
+				result = true
+			} else if claims["role"] == "guest" && method != "GET" {
+				result = false
+			} else {
+				result = true
+			}
+			return result
 		},
 		Unauthorized: func(c *gin.Context, code int, message string) {
 			c.JSON(code, gin.H{

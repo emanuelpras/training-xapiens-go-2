@@ -1,0 +1,66 @@
+## Cache
+
+1. Cache tujuannya adalah membantu menampilkan data dengan lebih cepat
+2. Kenapa lebih cepat? Karena datanya disimpan di dalam memory(RAM).
+3. Kekurangan dari cache : data yang disimpan itu sifatnya hanya sementara & cost.
+4. Cache menggunakan prinsip key-value pairing untuk ambil data
+    - key string
+    - value int / string / json
+5. Kapan kita pakai cache?
+    - Ketika apps lemot DAN udah coba optimasi query & optimasi database
+        -- Tentukan policy -> expired cache.
+    - Kalau pakai 3rd party / api dari luar.
+6. Jenis cache
+    - InMemory cache
+        - Data disimpan dalam cache memory server(tempat apps di deploy)
+    - Distributed cache
+        - Data disimpan dalam apps external(bukan server dimana apps di deploy)
+7. Misal 1 Database -> di hit 2 apps -> masing masing apps di deploy di server yang berbeda
+    - Contoh :
+    -- Database postgre di server 10.14.99.105
+    -- Apps pertama di server 10.14.99.103 -- Cache 1 disimpan di server 99.103
+    -- Apps kedua di server 10.14.255.103 -- Cache 2 disimpan di server 255.103
+    --- kedua apps punya fitur untuk post dan get data vendor
+
+    Flow :
+    - Dimas post 1 data vendor di apps pertama (datanya tidak dimasukan di cache) 
+    - Dimas get data vendor di apps pertama (datanya dimasukan di cache)
+    - Sahlan post 1 data vendor di apps kedua (datanya tidak dimasukan di cache)
+    - Sahlan get data vendor di apps kedua (datanya dimasukan di cache)
+    - Dimas get data vendor lagi di aps pertama ---> berapa data yang di dapat? 1
+    - Sahlan get data vendor lagi di aps kedua ---> berapa data yang di dapat? 2
+
+    1. Data vendor : username : vendorA; passwordnya : inipasswordvendor
+    2. Dimas get data vendor (dari cache apps pertama) --> username : vendorA; password : inipasswordvendor
+    3. Sahlan update password menjadi "passwordABC" -> masukan data ke cache kedua
+    4. Sahlan get data vendor (dari cache apps kedua) -> username : vendorA; password : passwordABC
+    5. Dimas get data vendor (dari cache apps pertama) --> username : vendorA; password : inipasswordvendor
+
+    in memory cache aman Ketika :
+    1. 1 db dipakai di 1 apps
+    2. 1 db dipakai di berbagai apps TAPI appsnya di deploy di server yang sama.
+
+8. Jenis distributed cache (Redis).
+    - Contoh :
+    -- Database postgre di server 10.14.99.105
+    -- Apps pertama di server 10.14.99.103
+    -- Apps kedua di server 10.14.255.103
+    -- Cache disimpan di server 10.14.10.103
+    --- kedua apps punya fitur untuk post dan get data vendor
+
+    Flow :
+    - Dimas post 1 data vendor di apps pertama (datanya tidak dimasukan di cache) 
+    - Dimas get data vendor di apps pertama (datanya dimasukan di cache)
+    - Sahlan post 1 data vendor di apps kedua (datanya tidak dimasukan di cache)
+    - Sahlan get data vendor di apps kedua (datanya dimasukan di cache)
+    - Dimas get data vendor lagi di aps pertama ---> berapa data yang di dapat? 1
+    - Sahlan get data vendor lagi di aps kedua ---> berapa data yang di dapat? 2
+
+    1. Data vendor : username : vendorA; passwordnya : inipasswordvendor
+    2. Dimas get data vendor (dari cache apps pertama) --> username : vendorA; password : inipasswordvendor
+    3. Sahlan update password menjadi "passwordABC" -> masukan data ke cache kedua
+    4. Sahlan get data vendor (dari cache apps kedua) -> username : vendorA; password : passwordABC
+    5. Dimas get data vendor (dari cache apps pertama) --> username : vendorA; password : passwordABC
+
+
+
