@@ -1,0 +1,36 @@
+### Background Task
+
+1. Background task -> sebuah proses yang jalannya di belakang layar (tanpa intervensi user).
+2. Background task biasanya dipakai buat apa?
+    - Email notification
+    - Backup database
+    - Fetch data
+    - Queue / antrian
+
+3. Queue atau antrian itu ditulis di sebuah database.
+
+
+#### Task
+1. Hit Endpoint create user
+    - Akan create data user
+    - Setelah 2 menit user tercreate, 
+    kirimkan email ke user dengan msg "Halo <nama user>, user anda telah berhasil melakukan register."
+2. Untuk menampung data queue, ada 3 cara
+    - tampung di slice
+    - tampung di database
+    - tampung di redis
+
+3. ID	CreatedAt	    Interval	Type	    Email	                Description/Data	                Status	DeliveredAt
+    1	18-3-2021 13:18	2	        Send email	emanuelpras4@gmail.com	Hello …. User anda telah terdaftar	1	    18-3-2021 13:20
+    2	18-3-2021 13:18	2	        Send email	emanuelpras4@gmail.com	Hello …. User anda telah terdaftar	1	    18-3-2021 13:20
+
+
+### Flow 
+1. Hit endpoint user {POST}
+    - db.Create....... ke model user
+    - db.Create ....... ke model queue
+2. Running crownjob 
+        - setiap n waktu yang sudah di tentukan check ke table queue
+            - ada ngga data yang statusnya 0 / false (balik lagi ke tipe data)
+                - kalau ada, check createdAtnya kapan + intervalnya (dimasukin ke variableA)
+                - if datetime.now == variableA -> lakukan kirim email & update status menjadi 1 / false & DeliveredAt nya = datetime.now
