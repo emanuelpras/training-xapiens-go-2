@@ -10,6 +10,7 @@ require (
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/gomodule/redigo v1.8.4
+	github.com/graphql-go/graphql v0.7.9 // indirect
 	github.com/jackc/pgproto3/v2 v2.0.7 // indirect
 	github.com/jasonlvhit/gocron v0.0.1 // indirect
 	github.com/joho/godotenv v1.3.0

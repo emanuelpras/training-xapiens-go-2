@@ -27,6 +27,7 @@ func main() {
 	routing.POST("/login", strDB.MiddleWare().LoginHandler)
 
 	routing.NoRoute(strDB.MiddleWare().MiddlewareFunc(), func(c *gin.Context) {
+		log.Println("ini c nya", c)
 		claims := jwt.ExtractClaims(c)
 		log.Printf("NoRoute claims: %#v\n", claims)
 		c.JSON(404, gin.H{"code": "PAGE_NOT_FOUND", "message": "Page not found"})

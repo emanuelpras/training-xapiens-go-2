@@ -15,7 +15,7 @@
     - Akan create data user
     - Setelah 2 menit user tercreate, 
     kirimkan email ke user dengan msg "Halo <nama user>, user anda telah berhasil melakukan register."
-2. Untuk menampung data queue, ada 3 cara
+2. Untuk menampung data queue, ada 3 cara (bebas mau pakai apa)
     - tampung di slice
     - tampung di database
     - tampung di redis
