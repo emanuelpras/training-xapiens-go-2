@@ -1,0 +1,4 @@
+## Task
+
+1. Implementasikan code dari mini project yang sudah teman2 bikin (REST API) ke dalam GraphQL
+2. Implementasi point 1 itu tanpa jwt.
