@@ -1,0 +1,30 @@
+version: "3.8"
+
+services: 
+  postgres:
+    image: postgres
+    container_name: postgres-go
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Komponen1!
+    ports:
+      - 4000:5432
+  golangapp:
+    container_name: appgodb
+    image: app-go-db
+    ports: 
+      - 8080:8080
+    depends_on: 
+    - postgres
+    environment: 
+    - DATABASE=postgres
+    - DATABASE_USER=postgres
+    - DATABASE_PASS=Komponen1!
+    - DATABSE_PORT=5432
+    - DATABASE_HOST=postgres-go
+    - DATABASE_NAME=vendorpayload
+    - DATABASE_SSLMODE=disable
+    - DATABASE_TIMEZONE=Asia/Jakarta      
+networks: 
+  golang_network:
+    name: golang_network
